@@ -71,7 +71,7 @@ public class Board
     }
     private void PlaceItem(string item, int x, int y)
     {
-       grid[y, x] = item;
+      grid[y, x] = item;
     }
 
     private void PlaceRandomItems(string item, int count)
@@ -81,10 +81,20 @@ public class Board
             int x, y;
             do
             {
-               x = random.Next(Size);
-               y = random.Next(Size);
+              x = random.Next(Size);
+              y = random.Next(Size);
             } while(grid[y, x] != "-");
             grid[y, x] = item;
         }
     }
+    public void Display()
+    {
+        for(int i = 0; i < Size; i++)
+        {
+            for(int j = 0; j < Size; j++)
+            Console.Write(grid[i, j] + " ");
+            Console.WriteLine();
+        }
+    }
+
 }
