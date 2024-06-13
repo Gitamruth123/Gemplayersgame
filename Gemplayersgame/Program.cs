@@ -2,8 +2,8 @@
 
 public class Position
 {
-  public int X { get; set; }
-  public int Y { get; set; }
+  public int X{ get; set; }
+  public int Y{ get; set; }
 
     public Position(int x, int y)
     {
@@ -14,9 +14,9 @@ public class Position
 
 public class Player
 {
-   public string Name { get; set; }
-   public Position Position { get; set; }
-   public int GemCount { get; set; }
+   public string Name{ get; set; }
+   public Position Position{ get; set; }
+   public int GemCount{ get; set; }
 
     public Player(string name, Position position)
     {
