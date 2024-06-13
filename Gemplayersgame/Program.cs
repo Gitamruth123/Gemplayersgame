@@ -29,17 +29,17 @@ public class Player
         switch(direction)
         {
            case 'U':
-               if(Position.Y > 0) Position.Y -= 1;
-                break;
+              if(Position.Y > 0) Position.Y -= 1;
+              break;
            case 'D':
-               if(Position.Y < 5) Position.Y += 1;
-                break;
+              if(Position.Y < 5) Position.Y += 1;
+              break;
            case 'L':
-               if(Position.X > 0) Position.X -= 1;
-                break;
+              if(Position.X > 0) Position.X -= 1;
+              break;
            case 'R':
-               if(Position.X < 5) Position.X += 1;
-                break;
+              if(Position.X < 5) Position.X += 1;
+              break;
         }
 
     }
@@ -96,5 +96,60 @@ public class Board
             Console.WriteLine();
         }
     }
+    public bool IsValidMove(Player player, char direction)
+    {
+       int newX = player.Position.X;
+       int newY = player.Position.Y;
 
+        switch(direction)
+        {
+           case 'U':
+              newY -= 1;
+              break;
+           case 'D':
+              newY += 1;
+              break;
+           case 'L':
+              newX -= 1;
+              break;
+            
+           case 'R':
+              newX += 1;
+              break;
+        }
+
+        return newX >= 0 && newX < Size && newY >= 0 && newY < Size && grid[newY, newX] != "O" && grid[newY, newX] != "P1" && grid[newY, newX] != "P2";
+    }
+    public void UpdatePosition(Player player, char direction)
+    {
+       int oldX = player.Position.X;
+       int oldY = player.Position.Y;
+
+        switch(direction)
+        {
+            
+          case 'U':
+             player.Position.Y -= 1;
+             break;
+          case 'D':
+             player.Position.Y += 1;
+             break;
+          case 'L':
+             player.Position.X -= 1;
+             break;
+          case 'R':
+             player.Position.X += 1;
+             break;
+        }
+
+        if(grid[player.Position.Y, player.Position.X] == "G")
+        {
+          player.GemCount++;
+        }
+
+        grid[oldY, oldX] = "-"; // Clear old position
+        grid[player.Position.Y, player.Position.X] = player.Name; // Set new position
+    }
 }
+
+
